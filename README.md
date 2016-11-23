@@ -6,11 +6,12 @@
 3. Run `pip install -r requirements.txt`
 
 ## Running
+
 ### Development
 
 Run `python run.py`
 
-### Production
+### Production
 
 Run `gunicorn run:app -w 5 -b 127.0.0.1:5000`
 
