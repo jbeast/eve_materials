@@ -1,4 +1,10 @@
 # Materials Service
+
+## Dependencies
+
+- python 2.7
+- monogdb
+
 ## Setup
 
 1. Clone the repo
