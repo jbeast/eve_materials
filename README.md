@@ -3,7 +3,7 @@
 ## Dependencies
 
 - python 2.7
-- monogdb
+- mongodb
 
 ## Setup
 
