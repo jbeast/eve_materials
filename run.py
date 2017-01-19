@@ -69,6 +69,13 @@ def create_app(settings):
       if schema_obj_copy[key]:
         del schema_obj_copy[key]
 
+  def cerberus_to_json_change_allowed_with_one_of(out_obj):
+    schema_obj_copy = out_obj['properties']
+    for key in schema_obj_copy:
+      if 'allowed' in schema_obj_copy[key]:
+        schema_obj_copy[key]['enum'] = schema_obj_copy[key]['allowed']
+        del schema_obj_copy[key]['allowed']
+
   def cerberus_to_json_schema(schema_obj):
     filter_list = ['meta', '_id', 'parent','ancestors']
     out_obj = {'type': 'object', 'properties': copy.deepcopy(schema_obj)}
@@ -76,6 +83,7 @@ def create_app(settings):
     cerberus_to_json_change_type_for_datetime(out_obj)
     cerberus_to_json_filter_parameters(out_obj, filter_list)
     cerberus_to_json_add_required_to_obj(out_obj)
+    cerberus_to_json_change_allowed_with_one_of(out_obj)  
 
     return out_obj
 
